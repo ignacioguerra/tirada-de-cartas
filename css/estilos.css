@@ -1,0 +1,87 @@
+body {
+	font: normal 100%/1.5 'Source Serif Pro', sans-serif;
+	color: rgb(21,21,21);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#wrapper {
+	width: 1120px;
+	max-width: 100%;
+	margin: 60px auto;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.hand {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+	padding-bottom: 40px;
+}
+
+.hand canvas,
+.hand img {
+	display: block;
+	margin: 0;
+	width: 100% !important;
+	height: auto !important;
+	transform: translate3d(0,0,0);
+}
+
+.hand img:not(:only-child) {
+	display: none;
+}
+
+canvas.sonoro {
+	cursor: pointer;
+}
+
+video {
+	display: none;
+}
+
+button {
+	font-family: inherit;
+	font-weight: 600;
+	font-size: 1.25em;
+	text-transform: uppercase;
+	padding: 0.25em 30px;
+	display: inline-block;
+	margin: 0;
+	border: 1px solid rgb(21,21,21);
+	border-radius: 6px;
+	background-color: #fff;
+	cursor: pointer;
+	transition: all 200ms ease-out;
+}
+
+button:hover {
+	background-color: rgb(21,21,21);
+	color: #fff;
+}
+
+.link {
+	font-size: 1.25em;
+	color: rgb(21,21,21);
+	display: block;
+	margin-bottom: 2em;
+}
+
+@media (max-width: 900px) {
+	.hand {
+		gap: 10px;
+	}
+}
+
+@media (max-width: 740px) {
+	#wrapper {
+		padding: 0 30px;
+	}
+	.hand {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+}

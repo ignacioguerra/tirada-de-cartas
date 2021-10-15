@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Laboratorio I - MMXX</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="hand">
+			<div class="card" id="carta1">
+				<img src="elementos/placeholder.png" alt="" width="750" height="1050" />
+			</div>
+			<div class="card" id="carta2">
+				<img src="elementos/placeholder.png" alt="" width="750" height="1050" />
+			</div>
+			<div class="card" id="carta3">
+				<img src="elementos/placeholder.png" alt="" width="750" height="1050" />
+			</div>
+		</div>
+		<button id="download">Descargar cartas</button>
+		<div id="p5_loading"></div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/card.js"></script>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search)
+		const handId = urlParams.get('mano')
+		if(handId) {
+			fetch(`${config.API_URL}/manos/${handId}.json`).then(response => response.json()).then(function(data) {
+				const hand = data
+				let card1 = new p5(cardSketch(hand[0]), 'carta1')
+				let card2 = new p5(cardSketch(hand[1]), 'carta2')
+				let card3 = new p5(cardSketch(hand[2]), 'carta3')
+			}).catch(err => console.log(err))
+		}
+	</script>
+</body>
+</html>
